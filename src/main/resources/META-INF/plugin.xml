@@ -20,6 +20,11 @@
             <category>Generate JUnit5 assertions</category>
         </intentionAction>
 
+        <projectConfigurable parentId="tools"
+                             instance="jbl.assertion.generator.settings.AssertionsGeneratorConfigurable"
+                             id="jbl.assertion.generator.settings.AssertionsGeneratorConfigurable"
+                             displayName="Assertions Generator Configuration"/>
+
     </extensions>
 
 </idea-plugin>

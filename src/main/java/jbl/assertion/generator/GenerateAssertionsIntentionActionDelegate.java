@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.intellij.ide.hierarchy.HierarchyBrowserBaseEx;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.JavaPsiFacade;
@@ -15,6 +16,7 @@ import com.intellij.psi.PsiExpression;
 import com.intellij.psi.PsiImportStaticStatement;
 import com.intellij.psi.PsiJavaFile;
 import com.intellij.psi.PsiLocalVariable;
+import com.intellij.psi.PsiMethod;
 import com.intellij.psi.PsiMethodCallExpression;
 import com.intellij.psi.PsiPackageStatement;
 import com.intellij.psi.PsiStatement;
@@ -44,6 +46,7 @@ public class GenerateAssertionsIntentionActionDelegate {
     public GenerateAssertionsIntentionActionDelegate(@NotNull final Project project, final Editor editor,
                                                      @NotNull final PsiElement element,
                                                      final JUnitContext jUnitContext) {
+
         this.project = project;
         this.editor = editor;
         this.element = element;
@@ -58,6 +61,16 @@ public class GenerateAssertionsIntentionActionDelegate {
     }
 
     public void invoke() {
+
+        final PsiMethod method = PsiTreeUtil.getParentOfType(element, PsiMethod.class);
+
+        final JUnitAnnotationFinder annotationFinder = new JUnitAnnotationFinder(
+            project,
+            method,
+            HierarchyBrowserBaseEx.getScopeAll()
+        );
+
+        System.out.println(annotationFinder.search());
 
         //Get the type variable of the identifier
         final PsiLocalVariable variableToAssert = PsiTreeUtil.getParentOfType(element, PsiLocalVariable.class);
