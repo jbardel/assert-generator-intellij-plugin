@@ -1,1 +1,1 @@
-rootProject.name = "junit-assert-generator-intellij-plugin"
+rootProject.name = "assert-generator-intellij-plugin"

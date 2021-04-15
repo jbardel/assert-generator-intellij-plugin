@@ -1,19 +1,25 @@
 <idea-plugin>
-    <id>com.github.jbardel.junitassertgeneratorintellijplugin</id>
-    <name>junit-assert-generator-intellij-plugin</name>
-    <vendor>jbardel</vendor>
+    <id>assert-generator-intellij-plugin</id>
+    <name>Assert Generator</name>
+    <vendor email="julien.bardel@gmail.com" url="https://jbardel.github.io/julienbardel/">Julien Bardel</vendor>
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.java</depends>
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.jbardel.junitassertgeneratorintellijplugin.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.jbardel.junitassertgeneratorintellijplugin.services.MyProjectService"/>
+
+        <intentionAction>
+            <className>jbl.assertion.generator.JUnit4IntentionAction</className>
+            <category>Generate JUnit4 assertions</category>
+        </intentionAction>
+
+        <intentionAction>
+            <className>jbl.assertion.generator.JUnit5IntentionAction</className>
+            <category>Generate JUnit5 assertions</category>
+        </intentionAction>
+
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.jbardel.junitassertgeneratorintellijplugin.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>
