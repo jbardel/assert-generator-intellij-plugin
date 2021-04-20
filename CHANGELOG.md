@@ -3,6 +3,18 @@
 # assert-generator-intellij-plugin Changelog
 
 ## [Unreleased]
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+## [0.0.2-beta] - 2021-04-20
 ### Changed
 - Adds more compatible versions of the ide
 
